@@ -91,3 +91,39 @@ export function signUserIn(email, password) {
         console.log("Error during sign-in:", error.message);
       });
   }
+
+  export function getRecipes() {
+    return JSON.parse(localStorage.getItem("recipes")) || [];
+  }
+
+  export function getRecipeById(id) {
+    const recipes = getRecipes();
+    return recipes.find(recipe => recipe.id === id);
+  }
+  
+  export function saveRecipes(recipes) {
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }
+  
+  export function addRecipe(recipe) {
+    const recipes = getRecipes();
+    recipe.id = new Date().getTime();
+    //doubt gonna get this to work but yknow why not
+    recipes.push(recipe);
+    saveRecipes(recipes);
+  }
+  
+  export function updateRecipe(updatedRecipe) {
+    const recipes = getRecipes();
+    const index = recipes.findIndex(recipe => recipe.id === updatedRecipe.id);
+    if (index !== -1) {
+      recipes[index] = updatedRecipe;
+      saveRecipes(recipes);
+    }
+  }
+  
+  export function deleteRecipe(id) {
+    let recipes = getRecipes();
+    recipes = recipes.filter(recipe => recipe.id !== id);
+    saveRecipes(recipes);
+  }

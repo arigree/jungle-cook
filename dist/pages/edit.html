@@ -1,19 +1,119 @@
 <div class="edit">
   <div class="form">
     <h2>Edit Your Recipe</h2>
-    <input type="text" id="imageURL" placeholder="image URL" />
+    <div class="image-url-container">
+      <input type="file" id="imageFile" accept="image/png, image/jpeg" />
+      <input type="hidden" id="imageURL" />
+      <span class="addBtn" id="uploadImageBtn">Attach File</span>
+    </div>
     <input type="text" id="recipeName" placeholder="Recipe Name" />
+    <input type="text" id="recipeDesc" placeholder="Recipe Description" />
+
+    <input type="text" id="recipeTime" placeholder="Recipe Total Time" />
+
+    <input type="text" id="recipeServing" placeholder="Recipe Serving Size" />
     <div class="ingreds">
       <p>Enter ingredients</p>
       <div id="ingredients-container"></div>
       <span class="addBtn" id="ingredBtn">+</span>
     </div>
+
     <div class="instructs">
       <p>Enter instructions</p>
       <div id="instructions-container"></div>
       <span class="addBtn" id="instructBtn">+</span>
     </div>
-
     <span id="submitBtn" class="submitBtn">Update Recipe</span>
   </div>
 </div>
+
+<script>
+  function loadRecipe() {
+    const recipe = JSON.parse(localStorage.getItem("currentRecipe"));
+
+    if (recipe) {
+      document.getElementById("imageURL").value = recipe.recipeImage;
+      document.getElementById("recipeName").value = recipe.recipeName;
+      document.getElementById("recipeDesc").value = recipe.recipeDesc;
+      document.getElementById("recipeTime").value = recipe.recipeTime;
+      document.getElementById("recipeServing").value = recipe.recipeServing;
+      const ingredientsContainer = document.getElementById(
+        "ingredients-container"
+      );
+      recipe.ingredients.forEach((ingredient) => {
+        const ingredientInput = document.createElement("input");
+        ingredientInput.value = ingredient;
+        ingredientsContainer.appendChild(ingredientInput);
+      });
+      const instructionsContainer = document.getElementById(
+        "instructions-container"
+      );
+      recipe.instructions.forEach((instruction) => {
+        const instructionInput = document.createElement("input");
+        instructionInput.value = instruction;
+        instructionsContainer.appendChild(instructionInput);
+      });
+    }
+  }
+  document.getElementById("uploadImageBtn").onclick = function () {
+    const fileInput = document.getElementById("imageFile");
+    const file = fileInput.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        document.getElementById("imageURL").value = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  document.getElementById("ingredBtn").onclick = function () {
+    const ingredientsContainer = document.getElementById(
+      "ingredients-container"
+    );
+    const newIngredientInput = document.createElement("input");
+    ingredientsContainer.appendChild(newIngredientInput);
+  };
+
+  document.getElementById("instructBtn").onclick = function () {
+    const instructionsContainer = document.getElementById(
+      "instructions-container"
+    );
+    const newInstructionInput = document.createElement("input");
+    instructionsContainer.appendChild(newInstructionInput);
+  };
+
+  document.getElementById("submitBtn").onclick = function () {
+    const updatedRecipe = {
+      recipeImage: document.getElementById("imageURL").value,
+      recipeName: document.getElementById("recipeName").value,
+      recipeDesc: document.getElementById("recipeDesc").value,
+      recipeTime: document.getElementById("recipeTime").value,
+      recipeServing: document.getElementById("recipeServing").value,
+      ingredients: Array.from(
+        document
+          .getElementById("ingredients-container")
+          .getElementsByTagName("input")
+      ).map((input) => input.value),
+      instructions: Array.from(
+        document
+          .getElementById("instructions-container")
+          .getElementsByTagName("input")
+      ).map((input) => input.value),
+    };
+
+    const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    const currentRecipeIndex = recipes.findIndex(
+      (recipe) => recipe.recipeName === updatedRecipe.recipeName
+    );
+
+    if (currentRecipeIndex !== -1) {
+      recipes[currentRecipeIndex] = updatedRecipe;
+      localStorage.setItem("recipes", JSON.stringify(recipes));
+    }
+
+    alert("Recipe updated!");
+    window.location.href = "showAllRecipes.html";
+  };
+
+  window.onload = loadRecipe;
+</script>

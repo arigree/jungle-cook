@@ -493,6 +493,8 @@ p {
   display: flex;
   width: 80vw;
   flex-direction: column;
+  position: relative;
+  z-index: 5;
 }
 .create .form p {
   margin-bottom: 5px;
@@ -517,15 +519,22 @@ p {
 .create .form .instructs {
   position: relative;
 }
+.create .form .image-url-container {
+  position: relative;
+}
 .create .form .addBtn {
   padding: 5px 10px;
-  background-color: teal;
+  background-color: salmon;
   color: white;
   border-radius: 50%;
   font-weight: bold;
   position: absolute;
   right: 0;
   bottom: 18px;
+  cursor: pointer;
+}
+.create .form #uploadImageBtn {
+  border-radius: 15px;
 }
 .create .form .submitBtn {
   display: block;
@@ -565,28 +574,68 @@ p {
   opacity: 0.6;
   z-index: 1;
 }
-.recipeContainer .mainR .recipe {
-  width: 500px;
-  min-height: 500px;
-  background-color: antiquewhite;
-  display: flex;
+.recipeContainer .mainR .content {
+  padding: 100px 50px;
+  width: 100vw;
+  height: 90vh;
+  position: relative;
+  z-index: 4;
 }
-.recipeContainer .mainR .recipe .recipeImageHolder {
-  width: 200px;
-  height: 200px;
-  background-color: black;
-  border-radius: 10px;
-  overflow: hidden;
+.recipeContainer .mainR .content h2 {
+  font-family: "caveat";
+  font-size: 25px;
+  text-align: left;
+  margin-left: 150px;
 }
-.recipeContainer .mainR .recipe .recipeImageHolder img {
+.recipeContainer .mainR .content .boxes {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.recipeContainer .mainR .recipe .recipeDescription {
-  width: calc(100% - 200px);
-  padding: 20px;
-  background-color: aliceblue;
+.recipeContainer .mainR .content .boxes .box {
+  display: flex;
+  margin: 50px;
+}
+.recipeContainer .mainR .content .boxes .box .image {
+  width: 300px;
+  height: 263px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+}
+.recipeContainer .mainR .content .boxes .box .textHolder {
+  width: 224px;
+  height: 263px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.recipeContainer .mainR .content .boxes .box .textHolder h4 {
+  font-family: "latoBlack";
+  font-weight: normal;
+  text-decoration: underline;
+  font-size: 16px;
+}
+.recipeContainer .mainR .content .boxes .box .textHolder p {
+  font-family: "latoReg";
+  font-size: 12px;
+  overflow: hidden;
+}
+.recipeContainer .mainR .content .boxes .box .textHolder .icons {
+  text-align: center;
+}
+.recipeContainer .mainR .content .boxes .box .textHolder .icons p {
+  font-family: "latoReg";
+  font-size: 10px;
+}
+.recipeContainer .mainR .content .boxes .box .textHolder .icons p img {
+  width: 10%;
 }
 
 .edit {
@@ -611,6 +660,8 @@ p {
   display: flex;
   width: 80vw;
   flex-direction: column;
+  position: relative;
+  z-index: 5;
 }
 .edit .form p {
   margin-bottom: 5px;
@@ -635,15 +686,22 @@ p {
 .edit .form .instructs {
   position: relative;
 }
+.edit .form .image-url-container {
+  position: relative;
+}
 .edit .form .addBtn {
   padding: 5px 10px;
-  background-color: teal;
+  background-color: salmon;
   color: white;
   border-radius: 50%;
   font-weight: bold;
   position: absolute;
   right: 0;
   bottom: 18px;
+  cursor: pointer;
+}
+.edit .form #uploadImageBtn {
+  border-radius: 15px;
 }
 .edit .form .submitBtn {
   display: block;
@@ -657,6 +715,47 @@ p {
   cursor: pointer;
   font-size: 18px;
   text-align: center;
+}
+
+.view {
+  width: 100vw;
+  padding: 150px 50px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  z-index: 1;
+}
+.view .topContent {
+  display: flex;
+  flex-direction: row;
+}
+.view .topContent .image {
+  height: 421px;
+  width: 468px;
+  background-image: url("../images/recipe-pizza.jpg");
+}
+.view .topContent .text {
+  padding: 40px;
+}
+.view .topContent .text h2 {
+  font-family: "caveat";
+}
+.view .bottomContent {
+  padding: 40px;
+}
+.view .bottomContent h2 {
+  font-family: "caveat";
 }
 
 .footer {

@@ -1,7 +1,66 @@
 <div class="recipeContainer">
   <div class="mainR">
     <div class="overlayR"></div>
-    <h1>Show All Recipes</h1>
-    <div id="showAllReipes"></div>
+    <div class="content">
+      <h2>Check out Your Recipes!</h2>
+      <div class="boxes" id="showAllRecipes"></div>
+    </div>
   </div>
 </div>
+
+<script>
+  function renderRecipes() {
+    const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    const recipeList = document.getElementById("showAllRecipes");
+
+    recipeList.innerHTML = "";
+
+    recipes.forEach((recipe, index) => {
+      if (
+        recipe.recipeName &&
+        recipe.recipeDesc &&
+        recipe.recipeImageURL &&
+        recipe.recipeTime &&
+        recipe.recipeServing
+      ) {
+        const recipeElement = document.createElement("div");
+        recipeElement.classList.add("box");
+
+        recipeElement.innerHTML = `
+                <div class="image" style="background-image: url('${recipe.recipeImageURL}')">
+                    <button class="editBtn" onclick="editRecipe(${index})">Edit</button>
+                </div>
+                <div class="textHolder">
+                  <h4>${recipe.recipeName}</h4>
+                  <p>${recipe.recipeDesc}</p>
+                  <div class="icons">
+                    <p><img src="../images/time.svg" alt="Timer Icon" /> ${recipe.recipeTime}</p>
+                    <p><img src="../images/servings.svg" alt="Servings" /> ${recipe.recipeServing}</p>
+                  </div>
+                </div>
+                <div class="btns">
+                  <button class="viewBtn" onclick="viewRecipe(${index})">View</button>
+                  <button class="editBtn" onclick="editRecipe(${index})">Edit</button>
+                  <button class="deleteBtn" onclick="deleteRecipe(${index})">Delete</button>
+                </div>
+              `;
+
+        recipeList.appendChild(recipeElement);
+      }
+    });
+  }
+  function viewRecipe(index) {
+    window.location.hash = `#recipeDetail/${index}`;
+  }
+
+  function editRecipe(index) {
+    window.location.hash = `#edit?id=${index}`;
+  }
+  function deleteRecipe(index) {
+    const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    recipes.splice(index, 1);
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+    renderRecipes();
+  }
+  window.onload = renderRecipes;
+</script>

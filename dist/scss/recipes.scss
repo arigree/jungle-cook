@@ -1,50 +1,100 @@
 .recipeContainer {
-  .mainR {
-    position: relative;
-    width: 100vw;
-    height: auto;
-    min-height: 100vh;
-    background-image: url("../images/recipe-hero.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    .overlayR {
+    .mainR {
+      position: relative;
+      width: 100vw;
+      height: auto;
+      min-height: 100vh;
+      background-image: url("../images/recipe-hero.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #a7e8bd;
-      opacity: 0.6;
-      z-index: 1;
-    }
-    .recipe {
-      width: 500px;
-      min-height: 500px;
-      background-color: antiquewhite;
-      display: flex;
-      .recipeImageHolder {
-        width: 200px;
-        height: 200px;
-        background-color: black;
-        border-radius: 10px;
-        overflow: hidden;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+      z-index: 2;
+      
+      .overlayR {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #a7e8bd;
+        opacity: 0.6;
+        z-index: 1;
       }
-
-      .recipeDescription {
-        width: calc(100% - 200px);
-        padding: 20px;
-        background-color: aliceblue;
+  
+      .content {
+        padding: 100px 50px;
+        width: 100vw;
+        height: 90vh;
+        position: relative;
+        z-index: 4;
+  
+        h2 {
+          font-family: "caveat";
+          font-size: 25px;
+          text-align: left;
+          margin-left: 150px;
+        }
+  
+        .boxes {
+            width: 100%;
+            height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+  
+          .box {
+            display: flex;
+            margin: 50px;
+            .image {
+                width: 300px;
+                height: 263px;
+              border-radius: 20px;
+              background-size: cover;
+              background-position: center;
+            }
+  
+            .textHolder {
+                width: 224px;
+                height: 263px;
+              background-color: white;
+              border-radius: 20px;
+              padding: 15px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+  
+              h4 {
+                font-family: "latoBlack";
+                font-weight: normal;
+                text-decoration: underline;
+                font-size: 16px;
+              }
+  
+              p {
+                font-family: "latoReg";
+                font-size: 12px;
+                overflow: hidden;
+                
+              }
+  
+              .icons {
+                text-align: center;
+              p {
+                font-family: "latoReg";
+                font-size: 10px;
+                img {
+                  width: 10%;
+                }
+              }
+            }
+            }
+          }
+        }
       }
     }
   }
-}
+  
