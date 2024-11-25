@@ -474,6 +474,7 @@ p {
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -483,6 +484,7 @@ p {
   position: absolute;
   top: 0;
   left: 0;
+  text-align: left;
   z-index: 1;
 }
 .create .form {
@@ -535,6 +537,54 @@ p {
   cursor: pointer;
   font-size: 18px;
   text-align: center;
+}
+
+.recipeContainer .mainR {
+  position: relative;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  background-image: url("../images/recipe-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.recipeContainer .mainR .overlayR {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #a7e8bd;
+  opacity: 0.6;
+  z-index: 1;
+}
+.recipeContainer .mainR .recipe {
+  width: 500px;
+  min-height: 500px;
+  background-color: antiquewhite;
+  display: flex;
+}
+.recipeContainer .mainR .recipe .recipeImageHolder {
+  width: 200px;
+  height: 200px;
+  background-color: black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.recipeContainer .mainR .recipe .recipeImageHolder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.recipeContainer .mainR .recipe .recipeDescription {
+  width: calc(100% - 200px);
+  padding: 20px;
+  background-color: aliceblue;
 }
 
 .footer {

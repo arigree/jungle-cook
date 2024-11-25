@@ -1,0 +1,50 @@
+.recipeContainer {
+  .mainR {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    background-image: url("../images/recipe-hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    .overlayR {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #a7e8bd;
+      opacity: 0.6;
+      z-index: 1;
+    }
+    .recipe {
+      width: 500px;
+      min-height: 500px;
+      background-color: antiquewhite;
+      display: flex;
+      .recipeImageHolder {
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .recipeDescription {
+        width: calc(100% - 200px);
+        padding: 20px;
+        background-color: aliceblue;
+      }
+    }
+  }
+}
