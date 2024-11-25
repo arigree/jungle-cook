@@ -15,6 +15,7 @@
       position: relative;
       z-index: 2;
       .smallCircle {
+        
         width: 168px;
         height: 168px;
         background-color: pink;
@@ -30,6 +31,9 @@
         padding: 10px;
         text-align: center;
         box-shadow: -2px 10px 6px #707070;
+        p{
+          font-family: "latoIt";
+        }
       }
 
       .greenCircle {
@@ -46,6 +50,7 @@
         text-align: center;
         box-shadow: -2px 10px 6px rgb(112, 112, 112);
         h2 {
+          font-family: "caveatBold";
           font-size: 1.5rem;
           max-width: 220px;
           text-align: center;
@@ -56,6 +61,7 @@
           max-width: 164px;
           text-align: center;
           margin: 0.5rem auto 0;
+          font-family: "latoReg";
         }
       }
     }

@@ -8,12 +8,20 @@
     src: url("../fonts/Lato/Lato-Regular.ttf");
   }
   @font-face {
+    font-family: "latoIt";
+    src: url("../fonts/Lato/Lato-Italic.ttf");
+  }
+  @font-face {
     font-family: "latoBlack";
     src: url("../fonts/Lato/Lato-Black.ttf");
   }
   @font-face {
     font-family: "caveat";
     src: url("../fonts/Caveat-Regular.ttf");
+  }
+  @font-face {
+    font-family: "caveatBold";
+    src: url("../fonts/Caveat-Bold.ttf");
   }
 }
 

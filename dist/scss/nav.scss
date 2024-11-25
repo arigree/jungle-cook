@@ -14,17 +14,21 @@
   .nav {
     display: flex;
     gap: 1.6rem;
+    
   }
   .nav ul {
     list-style: none;
     display: flex;
     gap: 1.6rem;
+    
   }
 
   .navLink a {
     color: black;
     text-decoration: none;
     text-transform: uppercase;
+    font-family: "caveat";
+    font-size: 25px;
   }
 
   .navLink a.active {
@@ -79,6 +83,7 @@
       text-align: center;
       background-color: rgb(244, 235, 115);
       transition: 0.3s ease-in-out;
+      
     }
     .nav ul {
       display: flex;
