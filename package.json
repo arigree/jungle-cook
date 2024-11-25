@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "firebase": "^11.0.2",
     "jquery": "^3.7.1",
     "sass": "^1.81.0",
     "webpack": "^5.96.1",
