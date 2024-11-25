@@ -45,6 +45,7 @@ onAuthStateChanged(auth, (user) => {
       $(".footer-nav a:contains('Create Recipe')").show();
       $(".footer-nav a:contains('Your Recipes')").show();
       $(".nav a:contains('Create Recipe')").show();
+      $(".nav a:contains('View Your Recipes')").show();
       
     } else {
       console.log("User is signed out");
@@ -54,6 +55,7 @@ onAuthStateChanged(auth, (user) => {
       $(".footer-nav a:contains('Create Recipe')").hide();
       $(".footer-nav a:contains('Your Recipes')").hide();
       $(".nav a:contains('Create Recipe')").hide();
+      $(".nav a:contains('View Your Recipes')").hide();
     }
   });
 

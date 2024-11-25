@@ -2,7 +2,7 @@ import * as $ from "jquery";
 import { signUserUp, signUserOut, signUserIn } from "./model";
 import { changePage } from "../src/model.js";
 
-const userRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+let isSubmitting = false;  // Flag to prevent multiple submissions
 
 function initSite() {
   $(window).on("hashchange", route);
@@ -71,8 +71,16 @@ function initListeners() {
     );
   });
 
-  $(document).on("click", "#submitBtn", function () {
+  $(document).on("click", "#submitBtn", function (e) {
+    e.preventDefault();
     console.log("Submit button clicked");
+
+    // Prevent multiple submissions
+    if (isSubmitting) {
+      console.log("Already submitting...");
+      return; // Exit if already submitting
+    }
+    isSubmitting = true;
 
     let recipe = {
       recipeName: $("#recipeName").val(),
@@ -91,12 +99,18 @@ function initListeners() {
       if (value) recipe.instructions.push(value);
     });
 
+    // Update the recipes array in localStorage
+    let userRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
     userRecipes.push(recipe);
     localStorage.setItem("recipes", JSON.stringify(userRecipes));
 
     alert("Recipe submitted successfully!");
-    $(".form input").val("");
+    $(".form input").val(""); // Clear the form inputs
     console.log("Updated recipes:", userRecipes);
+
+    setTimeout(() => {
+      isSubmitting = false;
+    }, 10); 
   });
 }
 
@@ -106,23 +120,16 @@ function route() {
 
   console.log("Routing to:", pageID);
 
-  if (pageID) {
-    $.get(`pages/${pageID}.html`, function (data) {
-      $("#app").html(data);
-      initListeners();
+  $.get(`pages/${pageID}.html`, function (data) {
+    $("#app").html(data);
+    initListeners();
 
-      if (pageID === "create") {
-        initListeners();
-      } else if (pageID === "showAllRecipes") {
-        renderRecipes();
-      }
-    });
-  } else {
-    $.get(`pages/create.html`, function (data) {
-      $("#app").html(data);
-      initListeners();
-    });
-  }
+    if (pageID === "create") {
+      initListeners(); // Only call once
+    } else if (pageID === "showAllRecipes") {
+      renderRecipes();
+    }
+  });
 
   changePage(pageID);
 }
@@ -157,4 +164,3 @@ $(document).ready(function () {
   initSite();
   setupMenu();
 });
-

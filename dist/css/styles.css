@@ -266,7 +266,7 @@ p {
   z-index: 1;
 }
 .account p {
-  font-family: "Lato", sans-serif;
+  font-family: "latoIt";
 }
 .account h2 {
   font-family: "Lato", sans-serif;
@@ -275,10 +275,10 @@ p {
   font-size: 2rem;
 }
 .account .form-container {
+  padding: 150px;
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  max-width: 800px;
+  width: 100vw;
 }
 .account .form-container .login-form,
 .account .form-container .signup-form {
@@ -289,10 +289,13 @@ p {
   border-radius: 5px;
   justify-content: center;
 }
-.account .form-container #submit, .account .form-container #siSubmit {
+.account .form-container .login-form #submit,
+.account .form-container .login-form #siSubmit,
+.account .form-container .signup-form #submit,
+.account .form-container .signup-form #siSubmit {
   font-size: 2rem;
   cursor: pointer;
-  font-family: "Lato", sans-serif;
+  font-family: "caveat";
   width: 100%;
   height: 52px;
   background-color: #ffd972;
@@ -306,7 +309,8 @@ p {
   transition: transform 0.2s ease-in-out;
   z-index: 5;
 }
-.account .form-container input {
+.account .form-container .login-form input,
+.account .form-container .signup-form input {
   border: solid black 2px;
   background-color: transparent;
   border-top: none;
@@ -314,10 +318,12 @@ p {
   border-right: none;
   margin-bottom: 5vh;
 }
-.account .form-container input::placeholder {
+.account .form-container .login-form input::placeholder,
+.account .form-container .signup-form input::placeholder {
   color: black;
 }
-.account .form-container #submit:hover {
+.account .form-container .login-form #submit:hover,
+.account .form-container .signup-form #submit:hover {
   transform: scale(1.05);
 }
 
@@ -581,6 +587,76 @@ p {
   width: calc(100% - 200px);
   padding: 20px;
   background-color: aliceblue;
+}
+
+.edit {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  z-index: 1;
+}
+.edit .form {
+  display: flex;
+  width: 80vw;
+  flex-direction: column;
+}
+.edit .form p {
+  margin-bottom: 5px;
+  margin-top: 30px;
+  font-size: 14px;
+}
+.edit .form input {
+  width: 80vw;
+  max-width: 100%;
+  display: block;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 2px solid black;
+}
+.edit .form input:focus {
+  outline: none;
+}
+.edit .form .ingreds {
+  position: relative;
+}
+.edit .form .instructs {
+  position: relative;
+}
+.edit .form .addBtn {
+  padding: 5px 10px;
+  background-color: teal;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+}
+.edit .form .submitBtn {
+  display: block;
+  border: none;
+  width: 30vw;
+  background-color: salmon;
+  margin: 0 auto;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
 }
 
 .footer {
