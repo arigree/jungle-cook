@@ -1,0 +1,104 @@
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.6rem;
+  }
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.6rem;
+  }
+
+  .navLink a {
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .navLink a.active {
+    text-decoration: underline;
+  }
+
+  .navLink a:hover {
+    text-decoration: underline;
+  }
+  .navLink #login {
+    display: inline-block;
+    width: 158px;
+    height: 52px;
+    background-color: #ffd972;
+    color: black;
+    text-align: center;
+    line-height: 52px;
+    border-radius: 26px;
+    box-shadow: -2px 10px 6px rgba(112, 112, 112, 0.5);
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+  }
+  .navLink #login:hover {
+    transform: scale(1.05);
+  }
+  .navLink #signup {
+    display: none;
+  }
+  .hamburgerMenu {
+    display: none;
+    z-index: 5;
+  }
+}
+
+@media (max-width: 700px) {
+  .navContainer {
+    .nav {
+      min-height: 100vh;
+      height: auto;
+      width: 100vw;
+      display: none;
+      flex-direction: column;
+      gap: 1.6rem;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      bottom: 0;
+      width: 100%;
+      z-index: 5;
+      padding-top: 6rem;
+      align-items: center;
+      text-align: center;
+      background-color: rgb(244, 235, 115);
+      transition: 0.3s ease-in-out;
+    }
+    .nav ul {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav.active {
+      display: flex;
+      right: 0;
+    }
+
+    .hamburgerMenu {
+      display: block;
+      cursor: pointer;
+      z-index: 6;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      z-index: 2;
+    }
+  }
+}

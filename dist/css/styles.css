@@ -2,12 +2,359 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin-bottom: 16px;
+}
+
+.main {
+  position: relative;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  background-image: url("../images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.main .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f25c54;
+  opacity: 0.6;
+  z-index: 1;
+}
+.main header {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+.navContainer .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.navContainer .nav {
+  display: flex;
+  gap: 1.6rem;
+}
+.navContainer .nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.6rem;
+}
+.navContainer .navLink a {
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.navContainer .navLink a.active {
+  text-decoration: underline;
+}
+.navContainer .navLink a:hover {
+  text-decoration: underline;
+}
+.navContainer .navLink #login {
+  display: inline-block;
+  width: 158px;
+  height: 52px;
+  background-color: #ffd972;
+  color: black;
+  text-align: center;
+  line-height: 52px;
+  border-radius: 26px;
+  box-shadow: -2px 10px 6px rgba(112, 112, 112, 0.5);
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+.navContainer .navLink #login:hover {
+  transform: scale(1.05);
+}
+.navContainer .navLink #signup {
+  display: none;
+}
+.navContainer .hamburgerMenu {
+  display: none;
+  z-index: 5;
+}
+
+@media (max-width: 700px) {
+  .navContainer .nav {
+    min-height: 100vh;
+    height: auto;
+    width: 100vw;
+    display: none;
+    flex-direction: column;
+    gap: 1.6rem;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    width: 100%;
+    z-index: 5;
+    padding-top: 6rem;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(244, 235, 115);
+    transition: 0.3s ease-in-out;
+  }
+  .navContainer .nav ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .navContainer .nav.active {
+    display: flex;
+    right: 0;
+  }
+  .navContainer .hamburgerMenu {
+    display: block;
+    cursor: pointer;
+    z-index: 6;
+  }
+  .navContainer .logo {
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+}
+.home .container {
+  position: relative;
+  z-index: 2;
+  padding: 80px;
+  display: flex;
+  height: calc(100% - 100px);
+  align-items: center;
+  justify-content: center;
+}
+.home .circleContainer {
+  width: 357px;
+  height: 357px;
+  position: relative;
+  z-index: 2;
+}
+.home .smallCircle {
+  width: 168px;
+  height: 168px;
+  background-color: pink;
+  position: absolute;
+  border-radius: 50%;
+  right: -60px;
+  top: -60px;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: -2px 10px 6px #707070;
+}
+.home .greenCircle {
+  width: 357px;
+  height: 357px;
+  background-color: rgb(244, 235, 115);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: -2px 10px 6px rgb(112, 112, 112);
+}
+.home .greenCircle h2 {
+  font-size: 1.5rem;
+  max-width: 220px;
+  text-align: center;
+  margin: 0 auto;
+}
+.home .greenCircle p {
+  font-size: 0.9rem;
+  max-width: 164px;
+  text-align: center;
+  margin: 0.5rem auto 0;
+}
+
+@media (max-width: 700px) {
+  .home .container .circleContainer {
+    position: relative;
+    z-index: 1;
+  }
+  .home .container .greenCircle {
+    z-index: 0;
+  }
+  .home .container .smallCircle {
+    z-index: -2;
+  }
+}
+.account {
+  margin: 0 auto;
+  position: relative;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  background-color: #ffd972;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.account .account p {
+  font-family: "Lato", sans-serif;
+}
+.account .account h2 {
+  font-family: "Lato", sans-serif;
+  font-weight: lighter;
+  margin-bottom: 10vh;
+  font-size: 2rem;
+}
+.account .form-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+}
+.account .login-form,
+.account .signup-form {
+  width: 45%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  justify-content: center;
+}
+.account button {
+  font-size: 2rem;
+  font-family: "Lato", sans-serif;
+  width: 100%;
+  height: 52px;
+  background-color: #ffd972;
+  color: black;
+  border: none;
+  text-align: center;
+  line-height: 52px;
+  border-radius: 26px;
+  box-shadow: -2px 10px 6px rgba(112, 112, 112, 0.5);
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+.account form {
+  font-family: "Lato", sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  justify-content: center;
+}
+.account input {
+  border: solid black 2px;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 5vh;
+}
+.account input::placeholder {
+  color: black;
+}
+.account button:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 700px) {
+  .account .form-container {
+    max-height: 70vh;
+    flex-direction: column;
+    padding: 10px;
+    margin: 0 auto;
+  }
+  .account .login-form,
+  .account .signup-form {
+    margin: 0 auto;
+    width: 80%;
+    padding: 10px;
+    box-shadow: none;
+  }
+  .account .form-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+  .account input {
+    font-size: 1rem;
+  }
+  .account button {
+    font-size: 1rem;
+    width: 100%;
+    height: auto;
+  }
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  font-size: 15px;
+  font-style: italic;
+  font-family: "Lato", sans-serif;
+  color: black;
+}
+.footer .footer p {
+  margin: 0;
+}
+.footer .footer-nav {
+  display: flex;
+  gap: 1rem;
+}
+.footer .footer-nav a {
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  font-style: italic;
+}
+.footer .footer-nav .footer-icon {
+  color: black;
+  height: 1rem;
+  width: 1rem;
+}
+
+@media (max-width: 700px) {
+  .footer {
+    font-size: 12px;
+    padding: 0.5rem 1rem;
+  }
+  .footer-nav a {
+    font-size: 12px;
+  }
 }

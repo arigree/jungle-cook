@@ -1,0 +1,111 @@
+.account {
+  margin: 0 auto;
+  position: relative;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  background-color: #ffd972;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  .account p {
+    font-family: "Lato", sans-serif;
+  }
+  .account h2 {
+    font-family: "Lato", sans-serif;
+    font-weight: lighter;
+    margin-bottom: 10vh;
+    font-size: 2rem;
+  }
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .login-form,
+  .signup-form {
+    width: 45%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    justify-content: center;
+  }
+  button {
+    font-size: 2rem;
+
+    font-family: "Lato", sans-serif;
+    width: 100%;
+    height: 52px;
+    background-color: #ffd972;
+    color: black;
+    border: none;
+    text-align: center;
+    line-height: 52px;
+    border-radius: 26px;
+    box-shadow: -2px 10px 6px rgba(112, 112, 112, 0.5);
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+  }
+  form {
+    font-family: "Lato", sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    justify-content: center;
+  }
+  input {
+    border: solid black 2px;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 5vh;
+  }
+  input::placeholder {
+    color: black;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 700px) {
+  .account {
+    .form-container {
+      max-height: 70vh;
+      flex-direction: column;
+      padding: 10px;
+      margin: 0 auto;
+    }
+
+    .login-form,
+    .signup-form {
+      margin: 0 auto;
+      width: 80%;
+      padding: 10px;
+      box-shadow: none;
+    }
+    .form-container h2 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    input {
+      font-size: 1rem;
+    }
+    button {
+      font-size: 1rem;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
