@@ -1,17 +1,19 @@
 .account {
-  margin: 0 auto;
-  position: relative;
   width: 100vw;
-  height: auto;
+  
   min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   background-color: #ffd972;
   background-size: cover;
   background-position: center;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+
   z-index: 1;
   .account p {
     font-family: "Lato", sans-serif;
