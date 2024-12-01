@@ -1,8 +1,60 @@
 import * as $ from "jquery";
+import { auth } from "./model.js"
 import { signUserUp, signUserOut, signUserIn } from "./model";
 import { changePage } from "../src/model.js";
 
+
 let isSubmitting = false;
+
+function route() {
+  const hashTag = window.location.hash || "#";
+  const pageID = hashTag.replace("#", "");
+
+  console.log("Routing to:", pageID);
+
+  const restrictedPages = ["create", "yourRecipes", "edit"];
+  const user = auth.currentUser;
+
+  if (restrictedPages.includes(pageID) && !user) {
+    alert("You must be logged in to access this page.");
+    window.location.hash = "#account";
+    return;
+  }
+
+  // Load the page content as usual
+  if (pageID) {
+    $.get(`pages/${pageID}.html`, function (data) {
+      $("#app").html(data);
+      initListeners();
+
+      if (pageID === "recipeDetail") {
+        const recipeId = window.location.hash.split("/")[1];
+        displayRecipeDetail(recipeId);
+      } else if (pageID === "create") {
+        initCreatePage();
+      } else if (pageID === "showAllRecipes") {
+        renderRecipes();
+      } else if (pageID === "edit") {
+        initEditPage();
+      }
+    }).fail((error) => {
+      console.error("Error loading page:", error.statusText);
+      alert("Page not found.");
+      window.location.hash = "#home";
+    });
+  } else {
+    $.get(`pages/home.html`, function (data) {
+      $("#app").html(data);
+      initListeners();
+      // initCreatePage();
+    }).fail((error) => {
+      console.error("Error loading home page:", error.statusText);
+      alert("Home page not found.");
+    });
+  }
+
+  changePage(pageID);
+}
 
 function initSite() {
   $(window).on("hashchange", route);
@@ -125,38 +177,7 @@ function initListeners() {
   });
 }
 
-function route() {
-  const hashTag = window.location.hash || "#";
-  const pageID = hashTag.replace("#", "");
 
-  console.log("Routing to:", pageID);
-
-  if (pageID) {
-    $.get(`pages/${pageID}.html`, function (data) {
-      $("#app").html(data);
-      initListeners();
-
-      if (pageID === "recipeDetail") {
-        const recipeId = window.location.hash.split('/')[1];
-        displayRecipeDetail(recipeId);
-      } else if (pageID === "create") {
-        initCreatePage();
-      } else if (pageID === "showAllRecipes") {
-        renderRecipes();
-      } else if (pageID === "edit") {
-        initEditPage();
-      }
-    });
-  } else {
-    $.get(`pages/create.html`, function (data) {
-      $("#app").html(data);
-      initListeners();
-      initCreatePage();
-    });
-  }
-
-  changePage(pageID);
-}
 
 function renderRecipes() {
   const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
@@ -198,5 +219,6 @@ function renderRecipes() {
 }
 
 $(document).ready(() => {
+  console.log("document ready")
   initSite();
 });

@@ -2,14 +2,15 @@
   <div class="form">
     <h2>Hey, create your recipe!</h2>
     <div class="image-url-container">
+      <label for="imageFile" class="fileBtn">Attach File</label>
       <input
         type="file"
         id="imageFile"
         placeholder="Add Recipe"
         accept="image/png, image/jpeg"
       />
-      <input type="hidden" id="imageURL" />
-      <span class="addBtn" id="uploadImageBtn">Attach File</span>
+      <input type="text" id="imageURL" placeholder="Upload Image" />
+      <!-- <span class="addBtn" id="uploadImageBtn">Attach File</span> -->
     </div>
     <input type="text" id="recipeName" placeholder="Recipe Name" />
     <input type="text" id="recipeDesc" placeholder="Recipe Description" />

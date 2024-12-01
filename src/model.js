@@ -8,56 +8,56 @@ import {
 } from "firebase/auth";
 import { app } from "./firebaseConfig";
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 export function changePage(pageName) {
-  console.log(pageName);
   if (pageName) {
-    $.get("../../pages/" + pageName + ".html")
+    $.get(`../dist/pages/${pageName}.html`)
       .done((data) => {
         $("#app").html(data);
       })
-      .fail((error) => {
-        console.log("error " + error);
-        alert("Error loading page: " + error.statusText);
-        $.get("../../pages/home.html", (data) => {
-          $("#app").html(data);
-        }).fail((err) => {
-          console.log("Error loading home: " + err);
-        });
-      });
+      // .fail((error) => {
+      //   console.error("Error loading page:", error);
+      //   alert("Page not found. Redirecting to home.");
+      //   window.location.hash = "#home";
+      // });
   } else {
-    $.get("../../pages/home.html", (data) => {
-      $("#app").html(data);
-    }).fail((error) => {
-      console.log("error " + error);
-      alert("Error loading home: " + error.statusText);
-    });
+    $.get("../dist/pages/home.html")
+      .done((data) => {
+        $("#app").html(data);
+      })
+      // .fail((error) => {
+      //   console.error("Error loading home page:", error);
+      //   alert("Error loading home page. Please try again later.");
+      // });
   }
 }
 
 onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log("User is signed in");
-      $("#login").text("Sign Out");
-      $("#login").attr("href", "#");
-      $("#login").off("click").on("click", () => signUserOut()); 
-      $(".footer-nav a:contains('Create Recipe')").show();
-      $(".footer-nav a:contains('Your Recipes')").show();
-      $(".nav a:contains('Create Recipe')").show();
-      $(".nav a:contains('View Your Recipes')").show();
-      
-    } else {
-      console.log("User is signed out");
-      $("#login").text("LogIn");
-      $("#login").attr("href", "#account");
-      $("#login").off("click").on("click", () => window.location.hash = "#account");
-      $(".footer-nav a:contains('Create Recipe')").hide();
-      $(".footer-nav a:contains('Your Recipes')").hide();
-      $(".nav a:contains('Create Recipe')").hide();
-      $(".nav a:contains('View Your Recipes')").hide();
+  if (user) {
+    console.log("User is signed in");
+    $("#login").text("Sign Out");
+    $("#login").attr("href", "#");
+    $("#login").off("click").on("click", () => signUserOut());
+    $(".footer-nav a:contains('Create Recipe')").show();
+    $(".footer-nav a:contains('Your Recipes')").show();
+    $(".nav a:contains('Create Recipe')").show();
+    $(".nav a:contains('View Your Recipes')").show();
+  } else {
+    console.log("User is signed out");
+    $("#login").text("LogIn");
+    $("#login").attr("href", "#account");
+    $("#login").off("click").on("click", () => (window.location.hash = "#account"));
+    $(".footer-nav a:contains('Create Recipe')").hide();
+    $(".footer-nav a:contains('Your Recipes')").hide();
+    $(".nav a:contains('Create Recipe')").hide();
+    $(".nav a:contains('View Your Recipes')").hide();
+    if (window.location.hash === "#create" || window.location.hash === "#yourRecipes") {
+      window.location.hash = "#account";
+      alert("Please log in to access this page.");
     }
-  });
+  }
+});
 
 export function signUserUp(fn, ln, email, password) {
   // console.log("model.js" + fn, ln, email, password);

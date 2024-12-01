@@ -4,23 +4,37 @@
   align-items: center;
   width: 90%;
   margin: 0 auto;
-  .logo {
-    font-size: 2rem;
-    font-weight: bold;
-    background-size: cover;
-    background-repeat: no-repeat;
+  .logoContainer {
+    
+   height: 100%;
+    .logo {
+      height: 100%;
+      width: 120%;
+      min-height: 70px;
+      min-width: 80px;
+      background-image: url("../images/logo.png");
+      font-size: 2rem;
+      font-weight: bold;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: "caveat";
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .nav {
     display: flex;
+    align-items: center;
     gap: 1.6rem;
-    
   }
   .nav ul {
     list-style: none;
     display: flex;
     gap: 1.6rem;
-    
   }
 
   .navLink a {
@@ -41,7 +55,7 @@
   .navLink #login {
     display: inline-block;
     width: 158px;
-    height: 52px;
+    // height: 52px;
     background-color: #ffd972;
     color: black;
     text-align: center;
@@ -83,7 +97,6 @@
       text-align: center;
       background-color: rgb(244, 235, 115);
       transition: 0.3s ease-in-out;
-      
     }
     .nav ul {
       display: flex;

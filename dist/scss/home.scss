@@ -15,7 +15,6 @@
       position: relative;
       z-index: 2;
       .smallCircle {
-        
         width: 168px;
         height: 168px;
         background-color: pink;
@@ -27,12 +26,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 10px;
+        
         padding: 10px;
         text-align: center;
         box-shadow: -2px 10px 6px #707070;
         p{
           font-family: "latoIt";
+          font-size: 10px;
+          width: 105px;
         }
       }
 
@@ -55,6 +56,7 @@
           max-width: 220px;
           text-align: center;
           margin: 0 auto;
+          font-size: 24px;
         }
         p {
           font-size: 0.9rem;
@@ -62,6 +64,7 @@
           text-align: center;
           margin: 0.5rem auto 0;
           font-family: "latoReg";
+          font-size: 13px;
         }
       }
     }

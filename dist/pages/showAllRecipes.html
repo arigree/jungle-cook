@@ -27,23 +27,26 @@
         recipeElement.classList.add("box");
 
         recipeElement.innerHTML = `
-                <div class="image" style="background-image: url('${recipe.recipeImageURL}')">
-                    <button class="editBtn" onclick="editRecipe(${index})">Edit</button>
-                </div>
-                <div class="textHolder">
-                  <h4>${recipe.recipeName}</h4>
-                  <p>${recipe.recipeDesc}</p>
-                  <div class="icons">
-                    <p><img src="../images/time.svg" alt="Timer Icon" /> ${recipe.recipeTime}</p>
-                    <p><img src="../images/servings.svg" alt="Servings" /> ${recipe.recipeServing}</p>
-                  </div>
-                </div>
-                <div class="btns">
-                  <button class="viewBtn" onclick="viewRecipe(${index})">View</button>
-                  <button class="editBtn" onclick="editRecipe(${index})">Edit</button>
-                  <button class="deleteBtn" onclick="deleteRecipe(${index})">Delete</button>
-                </div>
-              `;
+        <div class="container">
+  <div class="leftBox">
+    <div class="image" style="background-image: url('${recipe.recipeImageURL}')">
+      <button class="viewBtn" onclick="viewRecipe(${index})">View</button>
+    </div>
+    <div class="textHolder">
+      <h4>${recipe.recipeName}</h4>
+      <p>${recipe.recipeDesc}</p>
+      <div class="icons">
+        <p><img src="../images/time.svg" alt="Timer Icon" /> ${recipe.recipeTime}</p>
+        <p><img src="../images/servings.svg" alt="Servings" /> ${recipe.recipeServing}</p>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button class="editBtn" onclick="editRecipe(${index})">Edit Recipe</button>
+    <button class="deleteBtn" onclick="deleteRecipe(${index})">Delete</button>
+  </div>
+  </div>
+`;
 
         recipeList.appendChild(recipeElement);
       }
