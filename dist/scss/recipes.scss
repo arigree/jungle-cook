@@ -62,7 +62,7 @@
               border-radius: 20px;
               background-size: cover;
               background-position: center;
-              position: relative; // Allow View button to be positioned on top
+              position: relative;
 
               .viewBtn {
                 width: 128px;
@@ -91,7 +91,7 @@
             }
 
             .textHolder {
-              width: 300px; // Ensure text box matches image width
+              width: 300px;
               height: auto;
               background-color: white;
               border-radius: 20px;

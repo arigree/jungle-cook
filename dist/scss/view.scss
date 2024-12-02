@@ -1,44 +1,45 @@
-.view{
-    width: 100vw;
-    padding: 150px 50px;
-    min-height: 100vh;
-    margin: 0 auto;
+.view {
+  width: 100vw;
+  padding: 150px 100px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   position: relative;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: left;
+  z-index: 1;
+  .topContent {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: white;
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    text-align: left;
-    z-index: 1;
-    .topContent{
-        display: flex;
-        flex-direction: row;
-        .image{
-        height: 421px;
-        width: 468px;
-        background-image: url("../images/recipe-pizza.jpg");
-
+    flex-direction: row;
+    .image {
+      height: 421px;
+      width: 468px;
+      background-image: url("../images/recipe-pizza.jpg");
     }
-    .text{
-        h2{
-            font-family: "caveat";
-
-        }
-        padding: 40px;
+    .text {
+      h2 {
+        font-family: "caveat";
+      }
+      padding: 40px;
     }
+  }
+  .bottomContent {
+    width: 100%;
+    // padding: 40px;
+    h2 {
+      font-family: "caveat";
     }
-    .bottomContent{
-        padding: 40px;
-        h2{
-            font-family: "caveat";
-
-        }
+    ul{
+        list-style: none;
     }
-    
+  }
 }

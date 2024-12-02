@@ -108,7 +108,6 @@ export function signUserIn(email, password) {
   export function addRecipe(recipe) {
     const recipes = getRecipes();
     recipe.id = new Date().getTime();
-    //doubt gonna get this to work but yknow why not
     recipes.push(recipe);
     saveRecipes(recipes);
   }

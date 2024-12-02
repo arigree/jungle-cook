@@ -827,17 +827,24 @@ p {
   font-size: 18px;
   text-align: center;
 }
+.edit .icons {
+  display: flex;
+  flex-direction: column;
+}
+.edit a {
+  text-decoration: none;
+}
+.edit button {
+  text-decoration: none;
+}
 
 .view {
   width: 100vw;
-  padding: 150px 50px;
+  padding: 150px 100px;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
   background-color: white;
   background-size: cover;
   background-position: center;
@@ -848,6 +855,7 @@ p {
   z-index: 1;
 }
 .view .topContent {
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
@@ -863,10 +871,13 @@ p {
   font-family: "caveat";
 }
 .view .bottomContent {
-  padding: 40px;
+  width: 100%;
 }
 .view .bottomContent h2 {
   font-family: "caveat";
+}
+.view .bottomContent ul {
+  list-style: none;
 }
 
 .footer {

@@ -21,7 +21,6 @@ function route() {
     return;
   }
 
-  // Load the page content as usual
   if (pageID) {
     $.get(`pages/${pageID}.html`, function (data) {
       $("#app").html(data);
@@ -163,7 +162,7 @@ function initListeners() {
     });
 
     if (!recipe.recipeName || !recipe.recipeDesc || !recipe.recipeTime || !recipe.recipeServing || recipe.ingredients.length === 0 || recipe.instructions.length === 0) {
-      alert("Please fill out all fields before submitting!");
+      alert("Please fill out all fields before submitting");
       isSubmitting = false;
       return;
     }

@@ -3,9 +3,66 @@
     <div class="overlayR"></div>
     <div class="content">
       <h2>Check out Your Recipes!</h2>
+      <div class="boxes">
+        <div class="box">
+          <div class="container">
+            <div class="leftBox">
+              <div
+                class="image"
+                style="background-image: url('../images/recipe-pizza.jpg')"
+              >
+                <a href="#view">
+                  <button class="viewBtn">View</button>
+                </a>
+              </div>
+              <div class="textHolder">
+                <h4>Supreme Pizza</h4>
+                <p>
+                  Make pizza night super duper out of this world with homemade
+                  pizza. This recipe is supreme with vegetables and two types of
+                  meat. Yum!
+                </p>
+                <div class="icons">
+                  <p>
+                    <img src="../images/time.svg" alt="Timer Icon" /> 1h 24min
+                  </p>
+                  <p>
+                    <img src="../images/servings.svg" alt="Servings" /> 4
+                    servings
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="btns">
+              <a href="#edit">
+                <button class="editBtn">Edit Recipe</button>
+              </a>
+              <button class="delBtn">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.onload = () => {
+    console.log("Static page loaded.");
+  };
+</script>
+
+<!-- <div class="recipeContainer">
+  <div class="mainR">
+    <div class="overlayR"></div>
+    <div class="content">
+      <h2>Check out Your Recipes!</h2>
       <div class="boxes" id="showAllRecipes"></div>
     </div>
   </div>
+</div>
+
+<div id="dynamicContent" style="display: none">
 </div>
 
 <script>
@@ -28,42 +85,81 @@
 
         recipeElement.innerHTML = `
         <div class="container">
-  <div class="leftBox">
-    <div class="image" style="background-image: url('${recipe.recipeImageURL}')">
-      <button class="viewBtn" onclick="viewRecipe(${index})">View</button>
-    </div>
-    <div class="textHolder">
-      <h4>${recipe.recipeName}</h4>
-      <p>${recipe.recipeDesc}</p>
-      <div class="icons">
-        <p><img src="../images/time.svg" alt="Timer Icon" /> ${recipe.recipeTime}</p>
-        <p><img src="../images/servings.svg" alt="Servings" /> ${recipe.recipeServing}</p>
-      </div>
-    </div>
-  </div>
-  <div class="btns">
-    <button class="editBtn" onclick="editRecipe(${index})">Edit Recipe</button>
-    <button class="deleteBtn" onclick="deleteRecipe(${index})">Delete</button>
-  </div>
-  </div>
-`;
+          <div class="leftBox">
+            <div class="image" style="background-image: url('${recipe.recipeImageURL}')">
+              <a href="#view/${index}">
+                <button class="viewBtn">View</button>
+              </a>
+            </div>
+            <div class="textHolder">
+              <h4>${recipe.recipeName}</h4>
+              <p>${recipe.recipeDesc}</p>
+              <div class="icons">
+                <p><img src="../images/time.svg" alt="Timer Icon" /> ${recipe.recipeTime}</p>
+                <p><img src="../images/servings.svg" alt="Servings" /> ${recipe.recipeServing}</p>
+              </div>
+            </div>
+          </div>
+          <div class="btns">
+            <a href="#edit/${index}">
+              <button class="editBtn">Edit Recipe</button>
+            </a>
+            <button class="deleteBtn" onclick="deleteRecipe(${index})">Delete</button>
+          </div>
+        </div>
+        `;
 
         recipeList.appendChild(recipeElement);
       }
     });
   }
-  function viewRecipe(index) {
-    window.location.hash = `#recipeDetail/${index}`;
+
+  function handleNavigation() {
+    const hash = window.location.hash;
+    const match = hash.match(/#(view|edit)\/(\d+)/);
+    const content = document.getElementById("dynamicContent");
+
+    if (match) {
+      const action = match[1];
+      const index = parseInt(match[2], 10);
+      const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+      const recipe = recipes[index];
+
+      if (recipe) {
+        if (action === "view") {
+          content.innerHTML = `
+            <h2>Viewing: ${recipe.recipeName}</h2>
+            <p>${recipe.recipeDesc}</p>
+            <img src="${recipe.recipeImageURL}" alt="${recipe.recipeName}">
+          `;
+        } else if (action === "edit") {
+          content.innerHTML = `
+            <h2>Editing: ${recipe.recipeName}</h2>
+            <p>Edit form goes here...</p>
+          `;
+        }
+
+        content.style.display = "block";
+        document.querySelector(".recipeContainer").style.display = "none";
+      } else {
+        content.innerHTML = `<p>Recipe not found.</p>`;
+      }
+    } else {
+      content.style.display = "none";
+      document.querySelector(".recipeContainer").style.display = "block";
+    }
   }
 
-  function editRecipe(index) {
-    window.location.hash = `#edit?id=${index}`;
-  }
   function deleteRecipe(index) {
     const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
     recipes.splice(index, 1);
     localStorage.setItem("recipes", JSON.stringify(recipes));
     renderRecipes();
   }
-  window.onload = renderRecipes;
-</script>
+
+  window.addEventListener("hashchange", handleNavigation);
+  window.onload = () => {
+    renderRecipes();
+    handleNavigation();
+  };
+</script> -->
